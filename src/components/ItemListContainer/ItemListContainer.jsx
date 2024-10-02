@@ -7,6 +7,7 @@ import ItemList from "./ItemList"
 function ItemListContainer({ greetings }) {
     const [products, setProducts] = useState([]);
     const {idCategory} = useParams();
+    const {idSearch} = useParams();
 
     useEffect(() => {
         getProducts
@@ -14,12 +15,15 @@ function ItemListContainer({ greetings }) {
             if(idCategory){
                 const newProducts = respuesta.filter((product) => product.category===idCategory)
                 setProducts(newProducts);
+            } else if (idSearch) {
+                const newProducts = respuesta.filter((product) => product.nombre.toLowerCase().includes(idSearch.toLowerCase()))
+                setProducts(newProducts);
             } else {
                 setProducts(respuesta);
             }
         })
         .catch(error => console.error(error))
-    }, [idCategory])
+    }, [idCategory, idSearch])
 
     return (
         <div>
@@ -28,5 +32,6 @@ function ItemListContainer({ greetings }) {
         </div>
     )
 }
+
 
 export default ItemListContainer
