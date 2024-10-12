@@ -120,6 +120,6 @@ const products = [
 const getProducts = new Promise((resolve, reject) => {
     setTimeout(() => {
         resolve(products);
-    }, 0);
+    }, 3000);
 });
 export default getProducts;

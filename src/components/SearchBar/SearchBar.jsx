@@ -23,9 +23,9 @@ function SearchBar() {
         
     }
     return(
-        <div className="flex grow justify-center items-center">
-            <form onSubmit={handleSubmit}>
-                <input className="h-6 w-[60%] rounded-lg p-2 m-2" value={inputValue} onChange={handleChange} type="text" placeholder="Busque su producto aquí..."/>
+        <div className="w-[65%]">
+            <form onSubmit={handleSubmit} className="flex grow justify-center items-center">
+                <input className="h-6 w-[70%] rounded-lg p-2 m-2 text-center" value={inputValue} onChange={handleChange} type="text" placeholder="Busque su producto aquí..."/>
                 <button onSubmit={handleSubmit}>
                     <BsSearchHeart className="size-6"/>
                 </button>

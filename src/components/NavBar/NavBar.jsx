@@ -12,7 +12,7 @@ function NavBar() {
                 <div className="size-40 content-center h-32">
                     <Link to={"/"}><img className="hover:border-solid hover:border-4 hover:border-black hover:rounded-lg" src={logo} alt="" /></Link>
                 </div>
-                <div className="content-center text-lg">
+                <div className="content-center text-lg flex grow flex-col justify-center items-center">
                     <ul className="flex justify-center items-center space-x-3">
                         <Link className="hover:underline hover:decoration-solid" to={"/category/mates"}>Mates</Link>
                         <Link className="hover:underline hover:decoration-solid" to={"/category/alfajores"}>Alfajores</Link>

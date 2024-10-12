@@ -53,6 +53,7 @@ const Item = ({ product }) => {
                 {quantityPerItem > 0 && <div>{quantityPerItem}</div>}
                 <h2 className="p-2">{product.nombre}</h2>
                 <p className="p-2">${product.precio}</p>
+                <div className="space-x-4">
                 <Link to={`/detail/${product.id}`}>
                     <button className="bg-amber-200 rounded-lg p-2 shadow-2xl border-2 border-amber-200 hover:border-solid hover:border-2 hover:border-yellow-500 hover:bg-white hover:underline hover:decoration-solid">
                         <FaEye size="30px" />
@@ -61,6 +62,7 @@ const Item = ({ product }) => {
                 <button className="bg-amber-200 rounded-lg p-2 shadow-2xl border-2 border-amber-200 hover:border-solid hover:border-2 hover:border-yellow-500 hover:bg-white hover:underline hover:decoration-solid mt-2" onClick={addToCart}>
                     <BsCart4 size="30px" />
                 </button>
+                </div>
                 <img className="w-48 p-2" src={product.imagen} alt={product.nombre} />
             </div>
         </div>
