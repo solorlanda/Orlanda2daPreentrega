@@ -4,16 +4,14 @@ import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
 import ItemDetailConteiner from "./components/ItemDetailConteiner/ItemDetailConteiner";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import { CartContextProvider } from "./components/CartContext/CartContext";
-import NavBarConBoots from "./components/NavBar/NavBarConBoots";
 
-function App() {
-  const cartContext = [];
+
+const App= () => {
 
   return (
     <CartContextProvider>
       <BrowserRouter>
           <NavBar/>
-          {/* <NavBarConBoots/> */}
           <Routes>
           <Route path="/" element={<ItemListContainer greetings={"Productos Argentinos"}/>} />
           <Route path="/category/:idCategory" element={<ItemListContainer greetings={"Productos Argentinos"}/>}/>

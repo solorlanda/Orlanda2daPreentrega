@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import { BsCart4 } from "react-icons/bs";
 import { FaEye } from "react-icons/fa";
 import { useContext } from "react";
-import { CartContext } from "../CartContext/CartContext";
+import CartContext  from "../CartContext/CartContext";
+import { IoMdAddCircle } from "react-icons/io";
+import { IoIosRemoveCircle } from "react-icons/io";
 
 const Item = ({ product }) => {
     const [cart, setCart] = useContext(CartContext);
@@ -59,14 +61,20 @@ const Item = ({ product }) => {
                         <FaEye size="30px" />
                     </button>
                 </Link>
-                <button className="bg-amber-200 rounded-lg p-2 shadow-2xl border-2 border-amber-200 hover:border-solid hover:border-2 hover:border-yellow-500 hover:bg-white hover:underline hover:decoration-solid mt-2" onClick={addToCart}>
-                    <BsCart4 size="30px" />
+                {quantityPerItem === 0 ? (
+                <button className="bg-amber-200 rounded-lg p-2 shadow-2xl border-2 border-amber-200 hover:border-solid hover:border-2 hover:border-yellow-500 hover:bg-white hover:underline hover:decoration-solid mt-2" onClick={() => addToCart()}>
+                <BsCart4 size="30px" />
                 </button>
+            ) : (
+                <button onClick={() => addToCart()}><IoMdAddCircle /></button>
+            )}
+            {quantityPerItem > 0 && (
+                <button onClick={() => removeItem(product.id)}><IoIosRemoveCircle /></button>
+            )}
                 </div>
                 <img className="w-48 p-2" src={product.imagen} alt={product.nombre} />
             </div>
         </div>
     );
 };
-
 export default Item;
