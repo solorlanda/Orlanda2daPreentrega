@@ -2,6 +2,7 @@ import { useContext } from "react";
 import CartContext from "../CartContext/CartContext";
 import ShoppingCart from "./ShoppingCart";
 import carritoVacio from "../../assets/carritoVacio.png";
+import DeleteCart from "./DeleteCart";
 
 function CartList () {
     const [cart, setCart] = useContext (CartContext);
@@ -23,8 +24,8 @@ function CartList () {
                 ) : (
                     cart.map((product) => {
                         return (
-                            <div>
-                                <ShoppingCart key={product.id} product={product} />
+                            <div key={product.id}>
+                                <ShoppingCart  product={product}/>
                             </div>
                         )
                     })
@@ -34,8 +35,9 @@ function CartList () {
                 <h3 className="mb-3 underline decoration-2">Resumen del pedido</h3>
                 <p>Total de productos: {quantity}</p>
                 <h3>Monto total: ${totalPrice}</h3>
-                <div className="mt-3">
+                <div className="mt-3 flex flex-row gap-2">
                     <button className="bg-amber-200 rounded-lg p-2 shadow-2xl border-2 border-amber-200 hover:border-solid hover:border-2 hover:border-yellow-500 hover:bg-white hover:underline hover:decoration-solid">Comprar</button>
+                <DeleteCart/>
                 </div>
             </div>
         </div>

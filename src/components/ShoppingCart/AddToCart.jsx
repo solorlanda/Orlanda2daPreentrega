@@ -37,13 +37,7 @@ export const AddToCart = ({ product, icon }) => {
                 return [...currencyItems, { id: product.id, nombre: product.nombre, precio: product.precio, stock: product.stock, imagen: product.imagen, quantity: 1 }];
             }
         });
-        Swal.fire({
-            position: "bottom-end",
-            icon: "success",
-            title: "Producto agregado al carrito",
-            showConfirmButton: false,
-            timer: 1500
-            });
+        
     };
 
 

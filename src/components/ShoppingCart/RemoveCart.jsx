@@ -2,6 +2,7 @@ import { useContext } from "react";
 import CartContext from "../CartContext/CartContext";
 import { IoIosRemoveCircle } from "react-icons/io";
 
+
 const RemoveCart = ({product}) => {
     const [cart, setCart] = useContext (CartContext);
 
