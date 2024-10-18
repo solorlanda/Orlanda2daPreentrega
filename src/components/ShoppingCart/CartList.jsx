@@ -94,7 +94,7 @@ function CartList() {
                         ))
                     )}
                 </div>
-                <div className="flex flex-col justify-center items-center content-center justify-items-center font-letraH1 rounded-lg bg-celesteArgentina p-1 shadow-2xl border-solid border-4 border-white text-xl mt-8 m-2 font-semibold h-auto w-72">
+                <div className="flex flex-col justify-center items-center content-center justify-items-center font-letraH1 rounded-lg bg-celesteArgentina p-1 shadow-2xl border-solid border-4 border-white text-xl mt-8 m-2 font-semibold h-1/2 w-72 sticky top-36">
                     <h3 className="mb-3 underline decoration-2">Resumen del pedido</h3>
                     <p>Total de productos: {quantity}</p>
                     <h3>Monto total: ${totalPrice}</h3>

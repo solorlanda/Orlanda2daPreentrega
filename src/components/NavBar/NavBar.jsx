@@ -12,7 +12,7 @@ const NavBar = () => {
     }, 0);
 
     return (
-        <header className="sticky bg-amber-200 font-letraTitulos shadow-xl shadow-gray-500 h-32">
+        <header className=" bg-amber-200 font-letraTitulos shadow-xl shadow-gray-500 h-32 sticky top-0">
             <nav className="flex justify-around h-32">
                 <div className="size-40 content-center h-32">
                     <Link to={"/"}><img className="hover:border-solid hover:border-4 hover:border-black hover:rounded-lg" src={logo} alt="" /></Link>

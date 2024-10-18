@@ -1,44 +1,41 @@
 import { useEffect, useState } from "react";
-import getProducts from "../../data/getProducts";
-import { useParams, useNavigate } from "react-router-dom"; // Importar useNavigate
+import { useParams } from "react-router-dom";
 import ItemList from "./ItemList";
 import Loading from "../Loading/Loading";
+import getProducts from "../../data/Products";
 
 function ItemListContainer({ greetings }) {
     const [products, setProducts] = useState([]);
     const { idCategory, idSearch } = useParams();
     const [loading, setLoading] = useState(false);
-    const navigate = useNavigate(); // Hook para la navegación
-
     useEffect(() => {
         setLoading(true);
-        getProducts
+        getProducts()
             .then((respuesta) => {
-                let newProducts = [];
                 if (idCategory) {
-                    newProducts = respuesta.filter((product) => product.category === idCategory);
-                } else if (idSearch) {
-                    newProducts = respuesta.filter((product) =>
-                        product.nombre.toLowerCase().includes(idSearch.toLowerCase())
-                    );
-                } else {
-                    newProducts = respuesta;
-                }
-
-                if (newProducts.length === 0) {
-                    navigate("/404");
-                } else {
+                    const newProducts = respuesta.filter((product) =>
+                        typeof product.category === 'string' &&
+                        typeof idCategory === 'string' &&
+                        product.category.toLowerCase() === idCategory.toLowerCase())
                     setProducts(newProducts);
                 }
+                else if (idSearch) {
+                    const newProducts = respuesta.filter((product) =>
+                        product.nombre.toLowerCase().includes(idSearch.toLowerCase()))
+                    setProducts(newProducts);
+                }
+                else {
+                    setProducts(respuesta);
+                }
             })
-            .catch((error) => console.error(error))
+            .catch(error => console.error(error))
             .finally(() => setLoading(false));
-    }, [idCategory, idSearch, navigate]);
+    }, [idCategory, idSearch])
 
     return (
         <div>
             <h1 className="text-center font-letraH1 mt-14 text-3xl mb-8">{greetings}</h1>
-            {loading ? <Loading /> : <ItemList products={products} />}
+            {loading ? <Loading /> : <ItemList products={products} searchInput={idSearch} />}
         </div>
     );
 }
